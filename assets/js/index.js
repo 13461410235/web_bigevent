@@ -23,12 +23,6 @@ function getUserinfo() {
             // 渲染头像
             randerAvatar(res.data);
         },
-        complete: function(res) {
-            if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
-                localStorage.removeItem('token');
-                location.href = '/login.html'
-            }
-        },
 
     });
 };
@@ -40,11 +34,11 @@ function randerAvatar(user) {
         $('.welcome').html('欢迎' + user.username)
     }
     if (user.user_pic !== null) {
-        $('.text-photo').show();
+        $('.text-photo').hide();
         $('.layui-nav-img').attr('src', user.user_pic).show();
     } else {
-        var first = user.username[0].toUpperCase();
-        $('.layui-nav-img').hide();
+        var first = user.nickname[0].toUpperCase();
         $('.text-photo').html(first).show();
+        $('.layui-nav-img').hide();
     }
 }

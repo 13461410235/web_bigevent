@@ -1,7 +1,6 @@
 $.ajaxPrefilter(function(option) {
     option.url = 'http://ajax.frontend.itheima.net' + option.url
-    console.log(option);
-    // 设置请求头 统一接口
+        // 设置请求头 统一接口
     if (option.url.indexOf('/my/') !== -1) {
         option.headers = {
             Authorization: localStorage.getItem('token') || ''
